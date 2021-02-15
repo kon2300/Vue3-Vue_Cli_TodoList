@@ -59,13 +59,13 @@ export default {
       'initializeMyTodosMyNum'
     ]),
     // 削除ボタン、Idの振り直し
-    eraseTodo: function (index) {
+    eraseTodo (index) {
       this.removeMyTodos(index);
       this.initializeMyNum();
       this.initializeMyTodosMyNum();
     },
     // 状態変更ボタン
-    doChangeState: function (index) {
+    doChangeState (index) {
       this.getMyTodos[index].isActive = !this.getMyTodos[index].isActive;
       if (this.getMyTodos[index].tag === 'done') {
         this.getMyTodos[index].tag = 'work';
@@ -75,14 +75,14 @@ export default {
       this.filterTodos()
     },
     // リスト追加ボタン
-    addTask: function () {
+    addTask () {
       this.addMyTodos( {id: this.getMyNum, comment: this.getMyTask, isActive: false, tag: 'work'} );
       this.changeMyTask('');
       this.filterTodos();
       this.increaseMyNum();
     },
     // 状態に応じたリストの振り分け
-    filterTodos: function () {
+    filterTodos () {
       if (this.getMySelection === 'done') {
         return this.getMyTodos.filter((value) => value.tag === 'done');
       } else if (this.getMySelection === 'work') {
